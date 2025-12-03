@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automate My Outcome - AI Automation & Meta Ads Expert</title>
+    <meta name="description" content="Automate leads, ads & sales for Business Growth. 30%+ conversions boost." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #ffffff;
+        color: #374151; /* text-gray-700 */
+        overflow-x: hidden;
+      }
+      h1, h2, h3, h4, .font-serif {
+        font-family: 'Playfair Display', serif;
+      }
+      .gradient-text {
+        background-image: linear-gradient(to right, #7c3aed, #9333ea, #7c3aed); /* Violet-600 to Purple-600 */
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^18.2.0",
+    "react-dom/client": "https://aistudiocdn.com/react-dom@^18.2.0/client",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^10.16.4",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.284.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body>
+<elevenlabs-convai agent-id="agent_1901k8rgm0q1fjhs0y9pet8gdwqj"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    <div id="root"></div>
+    <script type="text/babel" data-type="module">
+      import React, { useState } from 'react';
+      import ReactDOM from 'react-dom/client';
+      import { motion, AnimatePresence } from 'framer-motion';
+      import {
+        Award, BrainCircuit, Users, Zap, Bot, Target, BarChart, FileText, Share2, Mic, Palette, LocateFixed, Star,
+        Building, Sun, ShoppingCart, Stethoscope, Briefcase, GraduationCap, Mail, Tv, Code,
+        Phone, Instagram, Linkedin, Twitter, Facebook, ChevronDown, ShieldCheck, TrendingUp, Send, Monitor, IndianRupee, X
+      } from 'lucide-react';
+
+      // --- COMPONENTS ---
+
+      const WhatsAppIcon = () => (
+        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor">
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 1.952.568 3.76 1.559 5.291L2 22l4.709-1.559A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm3.11 11.231c-.167.291-.972.935-1.139 1.054-.166.119-.44.178-.714.119-.274-.059-1.258-.466-2.396-1.493-1.047-.94-1.63-2.112-1.749-2.29-.119-.178-.015-.282.104-.386.104-.089.233-.233.321-.307.089-.074.119-.134.178-.223.06-.089.03-.163-.015-.282-.044-.119-.386-1.002-.536-1.341-.149-.34-.298-.283-.417-.283h-.239c-.119 0-.283.045-.432.223-.15.178-.567.551-.567 1.356 0 .805.582 1.579.671 1.698.089.119 1.154 1.838 2.802 2.593 1.648.755 2.213.671 2.624.641.41-.03 1.258-.512 1.436-.998.178-.487.178-.902.119-.998-.059-.089-.223-.149-.416-.253z"/>
+        </svg>
+      );
+
+      const CustomCursor = () => {
+        const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+        const [isHovering, setIsHovering] = useState(false);
+
+        React.useEffect(() => {
+          const updateMousePosition = (e) => {
+            setMousePosition({ x: e.clientX, y: e.clientY });
+          };
+
+          const handleMouseOver = (e) => {
+             const target = e.target;
+             // check if target is clickable or interactive
+             const isClickable = target.matches('button, a, input, textarea, [role="button"], select') || target.closest('button, a, [role="button"]');
+             setIsHovering(!!isClickable);
+          };
+
+          window.addEventListener('mousemove', updateMousePosition);
+          window.addEventListener('mouseover', handleMouseOver);
+
+          return () => {
+            window.removeEventListener('mousemove', updateMousePosition);
+            window.removeEventListener('mouseover', handleMouseOver);
+          };
+        }, []);
+
+        return (
+          <>
+            {/* Main Cursor Dot */}
+            <motion.div
+              className="fixed top-0 left-0 w-3 h-3 bg-purple-600 rounded-full pointer-events-none z-[9999] hidden md:block mix-blend-multiply"
+              animate={{
+                x: mousePosition.x - 6,
+                y: mousePosition.y - 6,
+                scale: isHovering ? 0.5 : 1,
+              }}
+              transition={{
+                type: "tween",
+                ease: "backOut",
+                duration: 0.1
+              }}
+            />
+            {/* Outer Trailing Ring */}
+            <motion.div
+              className="fixed top-0 left-0 w-10 h-10 border border-purple-400 rounded-full pointer-events-none z-[9998] hidden md:block"
+              animate={{
+                x: mousePosition.x - 20,
+                y: mousePosition.y - 20,
+                scale: isHovering ? 1.5 : 1,
+                borderColor: isHovering ? "rgba(147, 51, 234, 0)" : "rgba(168, 85, 247, 0.5)",
+                background: isHovering ? "rgba(147, 51, 234, 0.1)" : "transparent"
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 150,
+                damping: 15,
+                mass: 0.5
+              }}
+            />
+          </>
+        );
+      };
+
+      const Header = () => {
+        const handleScheduleCall = () => {
+          const message = "Hi, I'm interested in scheduling a call to discuss AI automation for my business.";
+          const whatsappUrl = `https://wa.me/917972469053?text=${encodeURIComponent(message)}`;
+          window.open(whatsappUrl, '_blank');
+        };
+
+        return (
+          <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+            <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+              <div className="text-2xl font-bold font-serif tracking-wider text-gray-900">
+                <span className="gradient-text">AMO</span>
+              </div>
+              <button
+                onClick={handleScheduleCall}
+                className="bg-purple-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors duration-300 shadow-lg shadow-purple-600/30"
+              >
+                Schedule a Call
+              </button>
+            </div>
+          </header>
+        );
+      };
+
+      // Floating background elements to represent "Cash Flow", "Buildings", "Growth"
+      const FloatingElements = () => {
+        const icons = [
+          { Icon: Building, color: "text-purple-200", x: "10%", y: "20%", size: 48, duration: 8 },
+          { Icon: TrendingUp, color: "text-green-200", x: "80%", y: "15%", size: 56, duration: 10 },
+          { Icon: IndianRupee, color: "text-yellow-200", x: "20%", y: "60%", size: 64, duration: 9 },
+          { Icon: Zap, color: "text-blue-200", x: "85%", y: "70%", size: 40, duration: 7 },
+          { Icon: Bot, color: "text-pink-200", x: "50%", y: "50%", size: 90, duration: 12 },
+          { Icon: BarChart, color: "text-indigo-200", x: "15%", y: "85%", size: 48, duration: 11 },
+          { Icon: Share2, color: "text-orange-200", x: "75%", y: "80%", size: 44, duration: 13 },
+        ];
+        
+        return (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+             {icons.map((item, i) => (
+               <motion.div
+                  key={i}
+                  className={`absolute ${item.color}`}
+                  style={{ left: item.x, top: item.y }}
+                  animate={{ 
+                    y: [-20, 20, -20],
+                    rotate: [0, 10, -10, 0],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{
+                    duration: item.duration,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+               >
+                 <item.Icon size={item.size} strokeWidth={1.5} />
+               </motion.div>
+             ))}
+          </div>
+        )
+      }
+
+      const TickerTape = () => {
+        const items = [
+           { icon: <IndianRupee />, text: "Maximize Cash Flow" },
+           { icon: <Building />, text: "Real Estate Growth" },
+           { icon: <Zap />, text: "Instant Lead Response" },
+           { icon: <Bot />, text: "24/7 AI Automation" },
+           { icon: <Target />, text: "Precision Ad Targeting" },
+           { icon: <TrendingUp />, text: "Scale Revenue" },
+        ];
+        
+        // Duplicate for seamless scroll
+        const repeatedItems = [...items, ...items, ...items, ...items];
+
+        return (
+          <div className="w-full bg-white border-y border-gray-100 py-4 overflow-hidden relative z-20">
+             <motion.div 
+               className="flex gap-12 whitespace-nowrap"
+               animate={{ x: ["0%", "-50%"] }} 
+               transition={{ ease: "linear", duration: 30, repeat: Infinity }}
+             >
+                {repeatedItems.map((item, i) => (
+                   <div key={i} className="flex items-center gap-2 text-gray-500 font-medium">
+                      <span className="text-purple-500">{item.icon}</span>
+                      <span>{item.text}</span>
+                   </div>
+                ))}
+             </motion.div>
+          </div>
+        );
+      };
+
+      const AIWidgetTooltip = () => {
+        const [isVisible, setIsVisible] = useState(false);
+
+        React.useEffect(() => {
+          // Delay showing the tooltip to simulate the agent "coming online"
+          const timer = setTimeout(() => setIsVisible(true), 2500);
+          return () => clearTimeout(timer);
+        }, []);
+
+        return (
+          <AnimatePresence>
+            {isVisible && (
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                className="fixed bottom-24 right-4 sm:right-6 z-50 w-72 pointer-events-auto"
+              >
+                <div className="relative bg-white p-4 rounded-2xl shadow-2xl border border-purple-100">
+                  <button 
+                    onClick={() => setIsVisible(false)}
+                    className="absolute -top-3 -left-3 bg-white border border-gray-100 shadow-md rounded-full p-1.5 text-gray-400 hover:text-red-500 transition-colors z-10"
+                    aria-label="Close AI prompt"
+                  >
+                    <X size={14} />
+                  </button>
+                  
+                  <div className="flex gap-3 items-start">
+                    <div className="relative shrink-0 mt-1">
+                       <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-full flex items-center justify-center text-white shadow-lg">
+                          <Bot size={20} />
+                       </div>
+                       <span className="absolute -bottom-0.5 -right-0.5 flex h-3.5 w-3.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500 border-2 border-white"></span>
+                        </span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 text-sm">Hi there! 👋</h4>
+                      <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                        I'm your <b>AI Assistant</b>. Tap the microphone button below to ask me anything about scaling your business! 🎙️
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Arrow pointing down towards the widget */}
+                  <div className="absolute -bottom-2 right-8 w-4 h-4 bg-white transform rotate-45 border-r border-b border-purple-100"></div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        );
+      };
+
+      const HeroSection = () => {
+        const handleWhatsappClick = () => {
+          window.open('https://wa.me/917972469053?text=Hi%2C%20I%20saw%20your%20site%20and%20I%27m%20interested%20in%20AI%20automation.', '_blank');
+        };
+
+        const handleScheduleCall = () => {
+          const message = "Hi, I'm interested in scheduling a call to discuss AI automation for my business.";
+          const whatsappUrl = `https://wa.me/917972469053?text=${encodeURIComponent(message)}`;
+          window.open(whatsappUrl, '_blank');
+        };
+
+        return (
+          <>
+          <section className="relative min-h-screen flex flex-col justify-center items-center text-center py-20 overflow-hidden">
+            {/* Background Image with Overlay */}
+            <div className="absolute inset-0 z-0">
+              <img 
+                src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop" 
+                alt="Modern Business Workspace" 
+                className="w-full h-full object-cover opacity-30"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-white"></div>
+            </div>
+
+            {/* Animated Floating Icons */}
+            <FloatingElements />
+
+            <div className="relative z-20 container mx-auto px-6 flex-grow flex flex-col justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="inline-block bg-purple-50 text-purple-700 text-sm font-semibold px-4 py-1 rounded-full mb-4 border border-purple-200 shadow-sm">
+                  AI-Powered Client Acquisition | One-Stop Business Solution
+                </div>
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold font-serif text-gray-900 leading-tight mb-6">
+                  Automate Your Business to <br className="hidden md:block" /> <span className="gradient-text">Grow While You Sleep</span>
+                </h1>
+                <p className="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 mb-10">
+                   Stop chasing leads. We provide a complete solution for businesses to automate client acquisition, qualify prospects 24/7 with AI, and build high-converting digital assets on autopilot.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                  <button
+                    onClick={handleWhatsappClick}
+                    className="w-full sm:w-auto bg-purple-600 text-white font-bold px-8 py-4 rounded-lg hover:bg-purple-700 transition-transform duration-300 transform hover:scale-105 shadow-lg shadow-purple-600/40 flex items-center justify-center gap-2"
+                  >
+                    Automate My Outcome <Zap size={18} />
+                  </button>
+                  <button
+                    onClick={handleScheduleCall}
+                    className="w-full sm:w-auto bg-white text-gray-900 font-bold px-8 py-4 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors duration-300 shadow-sm"
+                  >
+                    Schedule a Strategy Call
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+            
+            {/* Ticker Tape at the bottom of Hero */}
+            <TickerTape />
+          </section>
+          </>
+        );
+      };
+
+      const clientCompanies = [
+        { name: "Lodha Group", logo: "https://logo.clearbit.com/lodhagroup.in" },
+        { name: "Nykaa", logo: "https://logo.clearbit.com/nykaa.com" },
+        { name: "SuccessGyan", logo: "https://logo.clearbit.com/successgyan.com" },
+        { name: "DLF Homes", logo: "https://logo.clearbit.com/dlf.in" },
+        { name: "Godrej Properties", logo: "https://logo.clearbit.com/godrejproperties.com" },
+        { name: "Prestige Estates", logo: "https://logo.clearbit.com/prestigeconstructions.com" },
+        { name: "Lenskart", logo: "https://logo.clearbit.com/lenskart.com" },
+        { name: "TechGadgets", logo: "https://placehold.co/200x80/ffffff/4b5563?text=TechGadgets" },
+        { name: "Corner Bistro", logo: "https://placehold.co/200x80/ffffff/4b5563?text=CornerBistro" }
+      ];
+
+      const ClientLogosSection = () => {
+        // Repeating to ensure smooth infinite scroll
+        const repeatedCompanies = [...clientCompanies, ...clientCompanies, ...clientCompanies, ...clientCompanies];
+
+        return (
+          <section className="py-16 bg-white border-b border-gray-200 overflow-hidden">
+            <div className="container mx-auto px-6 mb-10 text-center">
+                <p className="text-sm font-bold text-purple-600 tracking-widest uppercase">Trusted by Industry Leaders</p>
+            </div>
+            <div className="relative flex overflow-hidden group max-w-full">
+               <motion.div 
+                 className="flex gap-16 items-center whitespace-nowrap"
+                 animate={{ x: ["0%", "-50%"] }} 
+                 transition={{ ease: "linear", duration: 50, repeat: Infinity }}
+               >
+                  {repeatedCompanies.map((company, index) => (
+                      <div key={index} className="flex-shrink-0 w-[40vw] md:w-[25vw] flex items-center justify-center"> 
+                         <img 
+                           src={company.logo} 
+                           alt={company.name} 
+                           className="h-20 md:h-24 object-contain grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
+                           onError={(e) => {
+                             e.target.onerror = null; 
+                             e.target.src = `https://placehold.co/200x80/ffffff/4b5563?text=${company.name.split(' ')[0]}`;
+                           }}
+                         />
+                      </div>
+                  ))}
+               </motion.div>
+            </div>
+          </section>
+        );
+      };
+
+      const ValueCard = ({ icon, title, children }) => (
+        <motion.div
+          className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="flex items-center gap-4 mb-3">
+            <div className="bg-purple-100 p-3 rounded-md text-purple-600">
+              {icon}
+            </div>
+            <h3 className="text-xl font-bold text-gray-900">{title}</h3>
+          </div>
+          <p className="text-gray-600">{children}</p>
+        </motion.div>
+      );
+
+      const AboutSection = () => {
+        return (
+          <section className="py-20 sm:py-32 bg-slate-50">
+            <div className="container mx-auto px-6">
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.7 }}
+                >
+                  <h2 className="text-4xl font-extrabold font-serif mb-6 leading-tight text-gray-900">
+                    The <span className="gradient-text">AMO Experience</span>
+                  </h2>
+                  <p className="text-lg text-gray-600 mb-4">
+                    Our mission is to help businesses grow smarter — not harder — by combining the power of AI, automation, and digital marketing. We aim to make digital transformation simple, practical, and accessible for every entrepreneur.
+                  </p>
+                  <p className="text-gray-600 mb-4">
+                    We are passionate about using technology to build intelligent business systems that bridge the gap between traditional marketing and the AI-driven future. From running Meta Ads to building automated CRMs, our focus is on results, efficiency, and scalability.
+                  </p>
+                   <p className="text-gray-600">
+                    Our dedicated team of AI consultants, ad strategists, and creatives work with you to design custom AI agents, automated workflows, and precision Meta campaigns that engage the right audience, generate qualified leads, and boost ROI.
+                  </p>
+                </motion.div>
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <ValueCard icon={<BrainCircuit size={24} />} title="Data-Driven Results">AI-Powered Precision</ValueCard>
+                  <ValueCard icon={<Award size={24} />} title="Client Success">Unwavering Dedication</ValueCard>
+                  <ValueCard icon={<Zap size={24} />} title="Innovation">Cutting-edge solutions</ValueCard>
+                  <ValueCard icon={<Users size={24} />} title="Transparency">Clear communication</ValueCard>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const FoundersSection = () => {
+        return (
+          <section className="py-20 bg-white border-b border-gray-100">
+            <div className="container mx-auto px-6">
+              <motion.div
+                className="text-center max-w-3xl mx-auto mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="text-4xl font-extrabold font-serif mb-4 text-gray-900">
+                  Meet the <span className="gradient-text">Leadership</span>
+                </h2>
+                <p className="text-lg text-gray-600">
+                  The visionaries driving innovation and growth at AMO.
+                </p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                {/* Founder */}
+                <motion.div
+                  className="bg-slate-50 p-8 rounded-2xl border border-gray-200 text-center shadow-sm hover:shadow-md transition-all group"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-purple-100 border-4 border-white shadow-lg flex items-center justify-center">
+                     <span className="text-2xl font-bold text-purple-600">AS</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Avinash Sharma</h3>
+                  <p className="text-purple-600 font-bold uppercase tracking-wider text-sm mb-4">Founder & CEO</p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    With a deep passion for AI and digital marketing, Avinash leads the strategy at AMO, helping businesses transition into the automated era.
+                  </p>
+                </motion.div>
+
+                {/* Co-Founder */}
+                <motion.div
+                  className="bg-slate-50 p-8 rounded-2xl border border-gray-200 text-center shadow-sm hover:shadow-md transition-all group"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-purple-100 border-4 border-white shadow-lg flex items-center justify-center">
+                     <span className="text-2xl font-bold text-purple-600">GC</span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Gorakala Chaitnya</h3>
+                  <p className="text-purple-600 font-bold uppercase tracking-wider text-sm mb-4">Co-Founder & COO</p>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    Driving operational excellence and strategic partnerships, ensuring every client receives world-class automation solutions.
+                  </p>
+                </motion.div>
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const certifications = [
+        { icon: <GraduationCap />, title: "Pursuing B.Sc.", provider: "Academic" },
+        { icon: <Award />, title: "Meta Certified Digital Marketing Associate", provider: "Meta" },
+        { icon: <Award />, title: "Certified AI-Powered Marketer", provider: "Specialization" },
+        { icon: <Code />, title: "Diploma in ADCA", provider: "Advanced Computer Applications" },
+        { icon: <Tv />, title: "Fundamentals of Digital Marketing", provider: "Google" },
+        { icon: <Mail />, title: "Certified Email Marketer", provider: "Master Your Brand Voice" },
+      ];
+
+      const CertificationsSection = () => {
+        return (
+          <section className="py-20 sm:py-32 bg-white">
+            <div className="container mx-auto px-6">
+              <motion.div
+                className="text-center max-w-3xl mx-auto mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="text-4xl font-extrabold font-serif mb-4 text-gray-900">
+                  Certifications & <span className="gradient-text">Qualifications</span>
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Dedicated to mastering both the technical and strategic sides of digital business growth.
+                </p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {certifications.map((cert, index) => (
+                  <motion.div
+                    key={cert.title}
+                    className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow flex items-center gap-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <div className="text-purple-600 bg-purple-50 p-3 rounded-md">
+                      {cert.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900">{cert.title}</h3>
+                      <p className="text-sm text-gray-500">{cert.provider}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const services = [
+        { icon: <Monitor size={24} />, title: 'Website, App & Landing Page Design', desc: 'High-converting websites, mobile apps, and landing pages designed to capture leads and elevate your brand identity.' },
+        { icon: <Zap size={24} />, title: 'AI Automation & Workflow Design', desc: 'Build smart automations using tools like Zapier, Make, and Pabbly for tasks like automated WhatsApp lead follow-ups.' },
+        { icon: <Target size={24} />, title: 'Meta Ads (Facebook & Instagram)', desc: 'Create and manage high-performing ad campaigns for lead generation and sales, especially for Solar or E-commerce.' },
+        { icon: <Share2 size={24} />, title: 'Sales Funnel Creation', desc: 'Build complete lead systems from Ad to Landing Page to WhatsApp & CRM for automated property or service bookings.' },
+        { icon: <Bot size={24} />, title: 'Chatbot & CRM Integration', desc: 'Design AI chatbots and CRMs to handle enquiries, follow-ups, and data collection for Real Estate or Local Businesses.' },
+        { icon: <BarChart size={24} />, title: 'Data Automation & Reporting', desc: 'Auto-sync data between tools and generate live performance dashboards for lead tracking and follow-up.' },
+        { icon: <FileText size={24} />, title: 'Content Creation & Copywriting', desc: 'Compelling content that resonates with your audience and drives engagement.' },
+        { icon: <Mic size={24} />, title: 'AI Voice Agent', desc: 'Deploy intelligent voice agents for customer service, appointment setting, and lead qualification, available 24/7.' },
+        { icon: <Palette size={24} />, title: 'Branding & Creative Design', desc: 'Strong brand identity & visuals for higher recognition and sales.' },
+      ];
+
+      const ServicesSection = () => {
+        return (
+          <section className="py-20 sm:py-32 bg-slate-50">
+            <div className="container mx-auto px-6">
+              <motion.div
+                className="text-center max-w-3xl mx-auto mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="text-4xl font-extrabold font-serif mb-4 text-gray-900">
+                  Core Services & <span className="gradient-text">Expertise</span>
+                </h2>
+                <p className="text-lg text-gray-600">
+                  One-Stop Solution for all your business needs.
+                </p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {services.map((service, index) => (
+                  <motion.div
+                    key={service.title}
+                    className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-purple-300 hover:scale-105 transition-all duration-300 flex flex-col"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <div className="text-purple-600 mb-4 bg-purple-100 p-3 rounded-lg inline-block">
+                      {service.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
+                    <p className="text-gray-600 flex-grow">{service.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const caseStudies = [
+        {
+          icon: <Building />,
+          industry: 'Real Estate Automation',
+          problem: 'Manual follow-ups & missed leads.',
+          solution: 'Built WhatsApp CRM automation for property inquiries.',
+          result: '60% faster response time, 30% higher lead conversion.',
+          image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop'
+        },
+        {
+          icon: <Sun />,
+          industry: 'Solar Business Automation',
+          problem: 'Manual lead handling & repetitive quotations.',
+          solution: 'Created AI chatbot that calculates ROI and generates proposals instantly.',
+          result: 'Saved 5+ hours daily on manual communication.',
+          image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1000&auto=format&fit=crop'
+        },
+        {
+          icon: <ShoppingCart />,
+          industry: 'E-commerce Order Automation',
+          problem: 'Manual order updates & tracking.',
+          solution: 'Integrated Shopify with Google Sheets & WhatsApp alerts.',
+          result: 'Reduced admin work by 80%.',
+          image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000&auto=format&fit=crop'
+        },
+        {
+          icon: <Stethoscope />,
+          industry: 'Doctor Appointment System',
+          problem: 'Appointment confusion & missed calls.',
+          solution: 'AI chatbot with Google Calendar integration.',
+          result: 'Fully automated booking system and reminders.',
+          image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop'
+        }
+      ];
+
+      const CaseStudiesSection = () => {
+        return (
+          <section className="py-20 sm:py-32 bg-white">
+            <div className="container mx-auto px-6">
+              <motion.div
+                className="text-center max-w-3xl mx-auto mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="text-4xl font-extrabold font-serif mb-4 text-gray-900">
+                  Proven <span className="gradient-text">Case Studies</span>
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Real-world examples of how we save time, boost conversions, and scale businesses efficiently.
+                </p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                {caseStudies.map((study, index) => (
+                  <motion.div
+                    key={study.industry}
+                    className="bg-slate-50 rounded-xl border border-gray-200 shadow-sm overflow-hidden group"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5, delay: index * 0.15 }}
+                  >
+                    <div className="h-56 overflow-hidden relative">
+                        <div className="absolute inset-0 bg-purple-900/10 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
+                        <img src={study.image} alt={study.industry} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    </div>
+                    <div className="p-8">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="text-purple-600">{study.icon}</div>
+                        <h3 className="text-xl font-bold text-gray-900">{study.industry}</h3>
+                      </div>
+                      <div className="space-y-4">
+                        <p><strong className="text-gray-700 font-semibold">Problem:</strong> <span className="text-gray-600">{study.problem}</span></p>
+                        <p><strong className="text-gray-700 font-semibold">Solution:</strong> <span className="text-gray-600">{study.solution}</span></p>
+                        <p className="bg-purple-100 text-purple-800 p-3 rounded-md"><strong className="font-semibold">Result:</strong> {study.result}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const useCases = [
+        { industry: 'Real Estate', applications: 'Property Enquiry Chatbots, CRM, WhatsApp Automation', icon: <Building /> },
+        { industry: 'Solar', applications: 'ROI Calculator Bots, Lead Nurturing Automation', icon: <Sun /> },
+        { industry: 'E-commerce', applications: 'Inventory Sync, Order Updates, WhatsApp Marketing', icon: <ShoppingCart /> },
+        { industry: 'Local Businesses', applications: 'Appointment Systems, Automated Feedback Collection', icon: <Briefcase /> },
+        { industry: 'Coaches', applications: 'Webinar Funnels, AI DM Replies, Email Sequences', icon: <Star /> },
+        { industry: 'Doctors', applications: 'Appointment Chatbots, Auto Reminders, Follow-Up Messaging', icon: <Stethoscope /> },
+      ];
+
+      const UseCasesSection = () => {
+        return (
+          <section className="py-20 sm:py-32 bg-slate-50">
+            <div className="container mx-auto px-6">
+              <motion.div
+                className="text-center max-w-3xl mx-auto mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="text-4xl font-extrabold font-serif mb-4 text-gray-900">
+                  AI Use Cases <span className="gradient-text">Across Industries</span>
+                </h2>
+              </motion.div>
+              <div className="space-y-4">
+                {useCases.map((useCase, index) => (
+                  <motion.div
+                    key={useCase.industry}
+                    className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm grid md:grid-cols-3 gap-4 items-center"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <div className="md:col-span-1 flex items-center gap-3">
+                      <div className="text-purple-600">{useCase.icon}</div>
+                      <h3 className="font-bold text-gray-900 text-lg">{useCase.industry}</h3>
+                    </div>
+                    <p className="md:col-span-2 text-gray-600">{useCase.applications}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const processSteps = [
+        { num: '01', title: 'Discovery', description: 'Understand your goals and current workflow.' },
+        { num: '02', title: 'Strategy Mapping', description: 'Identify automation & ad opportunities.' },
+        { num: '03', title: 'Implementation', description: 'Build automation, chatbot, and ad systems.' },
+        { num: '04', title: 'Optimization', description: 'Test, refine, and improve performance.' },
+        { num: '05', title: 'Scaling', description: 'Support for continuous growth and updates.' },
+      ];
+
+      const ProcessSection = () => {
+        return (
+          <section className="py-20 sm:py-32 bg-white">
+            <div className="container mx-auto px-6">
+              <motion.div
+                className="text-center max-w-3xl mx-auto mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="text-4xl font-extrabold font-serif mb-4 text-gray-900">
+                  Our <span className="gradient-text">Work Process</span>
+                </h2>
+              </motion.div>
+              <div className="relative">
+                <div className="hidden md:block absolute left-1/2 -ml-px w-0.5 h-full bg-gray-200" aria-hidden="true"></div>
+                {processSteps.map((step, index) => (
+                  <motion.div
+                    key={step.num}
+                    className="relative md:flex md:items-center md:justify-center md:mb-12"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                  >
+                    <div className={`flex items-center w-full mb-8 md:mb-0 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                      <div className="md:w-1/2"></div>
+                      <div className="md:w-1/2 md:pl-8 md:pr-8">
+                        <div className={`bg-white p-6 rounded-lg border border-gray-200 shadow-sm w-full ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+                          <p className="text-5xl font-black text-purple-600 opacity-20 mb-2">{step.num}</p>
+                          <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
+                          <p className="text-gray-600">{step.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute left-1/2 -ml-4 top-1/2 -mt-4 hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-purple-600 border-4 border-white shadow-md">
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const tech = [
+        "OpenAI", "Gemini", "Claude", "Zapier", "Make", "Pabbly", "n8n", "Meta Ads", "Google Ads", "GoHighLevel", "Zoho", "HubSpot", "Google Sheets", "Notion", "Airtable"
+      ];
+
+      const TechStackSection = () => {
+        return (
+          <section className="py-20 sm:py-32 bg-slate-50">
+            <div className="container mx-auto px-6">
+              <motion.div
+                className="text-center max-w-3xl mx-auto mb-12"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="text-4xl font-extrabold font-serif mb-4 text-gray-900">
+                  Our <span className="gradient-text">Technology Stack</span>
+                </h2>
+              </motion.div>
+              <motion.div
+                className="flex flex-wrap justify-center gap-4"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, staggerChildren: 0.1 }}
+              >
+                {tech.map((item, index) => (
+                  <motion.div
+                    key={item}
+                    className="bg-white text-gray-700 font-medium px-4 py-2 rounded-lg border border-gray-200 shadow-sm"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                  >
+                    {item}
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </section>
+        );
+      };
+
+      const reasons = [
+          { icon: <Award />, text: 'Certified in AI, Digital Marketing & Meta Ads' },
+          { icon: <Briefcase />, text: 'Experience across multiple industries (Real Estate, Solar, E-commerce, etc.)' },
+          { icon: <BrainCircuit />, text: 'Strong combination of technical skills + marketing mindset' },
+          { icon: <ShieldCheck />, text: 'Systems built for performance, not complexity' },
+          { icon: <TrendingUp />, text: 'Proven to save time, increase leads, and improve ROI' },
+      ];
+
+      const WhyWorkWithUsSection = () => {
+          return (
+              <section className="py-20 sm:py-32 bg-white">
+                  <div className="container mx-auto px-6">
+                      <motion.div
+                          className="text-center max-w-3xl mx-auto mb-16"
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, amount: 0.5 }}
+                          transition={{ duration: 0.5 }}
+                      >
+                          <h2 className="text-4xl font-extrabold font-serif mb-4 text-gray-900">
+                              Why <span className="gradient-text">Work With Us?</span>
+                          </h2>
+                           <p className="text-lg text-gray-600">
+                              We don’t just create automations — we build systems that generate results on autopilot.
+                          </p>
+                      </motion.div>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                          {reasons.map((reason, index) => (
+                              <motion.div
+                                  key={index}
+                                  className="bg-slate-50 p-6 rounded-lg border border-gray-200 shadow-sm"
+                                  initial={{ opacity: 0, y: 20 }}
+                                  whileInView={{ opacity: 1, y: 0 }}
+                                  viewport={{ once: true, amount: 0.3 }}
+                                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                              >
+                                  <div className="flex items-center gap-4">
+                                      <div className="text-purple-600 bg-purple-100 p-3 rounded-md">
+                                          {reason.icon}
+                                      </div>
+                                      <p className="font-semibold text-gray-900">{reason.text}</p>
+                                  </div>
+                              </motion.div>
+                          ))}
+                      </div>
+                  </div>
+              </section>
+          );
+      };
+
+      const testimonialsData = [
+        { image: `https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&auto=format&fit=crop`, quote: "The Predictive Buying Window Targeting for our real estate projects is pure genius. Our ad spend is more efficient than ever, and we're seeing a 3x ROI on PropTech campaigns. AMO knows their stuff.", name: 'Priya S.', company: 'Marketing Head, Lodha Group' },
+        { image: `https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=300&auto=format&fit=crop`, quote: "As a fast-fashion brand, LMRM has been a revolution. We now run campaigns that adapt to local weather and events, which has a direct positive impact on our sales for seasonal collections.", name: 'Rohan M.', company: 'Founder, Nykaa Fashion' },
+        { image: `https://images.unsplash.com/photo-1520409364224-63400afe26e5?q=80&w=300&auto=format&fit=crop`, quote: "For my coaching business, their landing page optimization and lead funnels were exceptional. Our conversion rates for webinar sign-ups have doubled since the redesign.", name: 'Aarav P.', company: 'Founder, SuccessGyan Coaching' },
+        { image: `https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=300&auto=format&fit=crop`, quote: "AMO's AI-driven campaigns boosted our property site visit bookings by over 70%. Their team is strategic, creative, and delivered measurable results for DLF.", name: 'Ananya K.', company: 'Digital Lead, DLF Homes' },
+        { image: `https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=300&auto=format&fit=crop`, quote: "Working with them was a game-changer. Their automation workflows saved us 15+ hours a week, and our audience grew by 50% in just three months.", name: 'Mike P.', company: 'CEO, TechGadgets Inc.' },
+        { image: `https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop`, quote: "The personalized ad experiences they created for our luxury properties significantly improved our qualified leads and client retention. Highly recommend!", name: 'Aditi V.', company: 'Marketing Director, Prestige Estates' },
+        { image: `https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=300&auto=format&fit=crop`, quote: "The end-to-end automation solution they built for our sales and marketing process has transformed our operations. What used to take days now takes minutes.", name: 'Siddharth J.', company: 'COO, Godrej Properties' },
+        { image: `https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=300&auto=format&fit=crop`, quote: "Their AI-optimized ad targeting on Meta is incredibly powerful. We're reaching a more qualified audience for our eyewear at a lower cost, which has been fantastic for our bottom line.", name: 'Vikram R.', company: 'E-commerce Manager, Lenskart' },
+        { image: `https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=300&auto=format&fit=crop`, quote: "The analytics and reporting are top-notch. For the first time, we have clear, actionable insights into our marketing performance. It's guided our entire growth strategy.", name: 'Chloe T.', company: 'Head of Growth, DataDriven Co.' },
+        { image: `https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300&auto=format&fit=crop`, quote: "Their team handled our social media strategy from the ground up and the results speak for themselves. We've never been more connected with our community.", name: 'Olivia M.', company: 'Manager, The Corner Bistro' },
+      ];
+
+      const TestimonialCard = ({ name, company, quote, image }) => (
+        <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm flex flex-col h-full">
+          <div className="flex items-center gap-2 mb-4">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="text-yellow-400 fill-current" size={16} />
+            ))}
+          </div>
+          <p className="text-gray-600 mb-6 flex-grow">"{quote}"</p>
+          <div className="flex items-center mt-auto">
+            <img src={image} alt={name} className="w-12 h-12 rounded-full mr-4 object-cover" />
+            <div>
+              <p className="font-bold text-gray-900">{name}</p>
+              <p className="text-sm text-gray-500">{company}</p>
+            </div>
+          </div>
+        </div>
+      );
+
+      const TestimonialsSection = () => {
+        const duplicatedTestimonials = [...testimonialsData, ...testimonialsData];
+
+        return (
+          <section className="py-20 sm:py-32 bg-slate-50 overflow-hidden">
+            <div className="container mx-auto px-6">
+              <motion.div
+                className="text-center max-w-3xl mx-auto mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="text-4xl font-extrabold font-serif mb-4 text-gray-900">
+                  What Our <span className="gradient-text">Clients Say</span>
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Real stories from businesses we've helped scale and automate for success.
+                </p>
+              </motion.div>
+            </div>
+            
+            <div className="relative">
+              <motion.div
+                className="flex gap-8"
+                animate={{
+                  x: ['0%', '-100%'],
+                  transition: {
+                    ease: 'linear',
+                    duration: 80,
+                    repeat: Infinity,
+                  },
+                }}
+              >
+                {duplicatedTestimonials.map((testimonial, index) => (
+                  <div key={index} className="flex-shrink-0 w-[85vw] sm:w-96">
+                      <TestimonialCard 
+                        {...testimonial}
+                      />
+                  </div>
+                ))}
+              </motion.div>
+              <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-slate-50 to-transparent pointer-events-none"></div>
+              <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-slate-50 to-transparent pointer-events-none"></div>
+            </div>
+
+          </section>
+        );
+      };
+
+      const faqs = [
+        {
+          question: 'What exactly is AI automation?',
+          answer: 'AI automation involves using smart software and tools to handle repetitive business tasks—like lead follow-ups, data entry, and customer support—so you can focus on growth. We build custom systems that work for you 24/7.',
+        },
+        {
+          question: 'How much do your services cost?',
+          answer: 'Pricing is tailored to your specific needs. We offer project-based pricing and monthly retainers. The best way to get a clear estimate is to book a free discovery call where we can assess your goals.',
+        },
+        {
+          question: 'How long does it take to see results?',
+          answer: 'While some automations provide immediate efficiency gains (like saving hours of manual work), marketing campaign results can take 1-3 months to fully optimize and show significant ROI. We focus on building sustainable, long-term growth.',
+        },
+        {
+          question: 'Which industries do you specialize in?',
+          answer: 'We have proven case studies in Real Estate, Solar, E-commerce, and for Local Businesses & Coaches. However, our automation principles are adaptable, and we\'re confident we can bring value to most service-based businesses.',
+        },
+        {
+          question: 'Do I need to be tech-savvy to work with you?',
+          answer: 'Not at all! Our job is to handle the technical complexity. We design user-friendly systems and provide clear instructions, so you can manage your new automated workflows with ease.',
+        },
+        {
+          question: 'What makes you different from other agencies?',
+          answer: 'We blend technical expertise with a deep understanding of marketing strategy. We don’t just build bots; we create end-to-end systems designed to increase your revenue and save you time. Our focus is on tangible business outcomes, not just flashy tech.',
+        },
+      ];
+
+      const FAQSection = () => {
+        const [openIndex, setOpenIndex] = useState(0);
+
+        const toggleFAQ = (index) => {
+          setOpenIndex(openIndex === index ? null : index);
+        };
+
+        return (
+          <section className="py-20 sm:py-32 bg-white">
+            <div className="container mx-auto px-6">
+              <motion.div
+                className="text-center max-w-3xl mx-auto mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="text-4xl font-extrabold font-serif mb-4 text-gray-900">
+                  Frequently Asked <span className="gradient-text">Questions</span>
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Your questions, answered. Find clarity on how we can help you grow.
+                </p>
+              </motion.div>
+
+              <div className="max-w-3xl mx-auto space-y-4">
+                {faqs.map((faq, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-slate-50 border border-gray-200 rounded-lg overflow-hidden"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <button
+                      onClick={() => toggleFAQ(index)}
+                      className="w-full flex justify-between items-center text-left p-6"
+                      aria-expanded={openIndex === index}
+                    >
+                      <h3 className="text-lg font-semibold text-gray-900">{faq.question}</h3>
+                      <motion.div
+                        animate={{ rotate: openIndex === index ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <ChevronDown className="text-purple-600" />
+                      </motion.div>
+                    </button>
+                    <AnimatePresence>
+                      {openIndex === index && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        >
+                          <div className="px-6 pb-6 text-gray-600">
+                            <p>{faq.answer}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const socialLinks = [
+        { icon: <Instagram />, href: 'https://www.instagram.com/amomedia16', name: 'Instagram' },
+        { icon: <Linkedin />, href: 'https://www.linkedin.com/in/avinash-shrama-abab0a2b3', name: 'LinkedIn' },
+        { icon: <Twitter />, href: 'https://x.com/avinaxh05', name: 'X' },
+        { icon: <WhatsAppIcon />, href: 'https://wa.me/917972469053', name: 'WhatsApp' },
+        { icon: <Facebook />, href: 'https://www.facebook.com/amomedia1', name: 'Facebook' },
+      ];
+
+      const ContactSection = () => {
+        const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+        const [status, setStatus] = useState('idle'); // idle, submitting, success
+
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          setStatus('submitting');
+          
+          // Format message for WhatsApp
+          const text = `*New Business Inquiry*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message}`;
+          
+          // Send to WhatsApp
+          window.open(`https://wa.me/917972469053?text=${text}`, '_blank');
+
+          // Show success in UI
+          setStatus('success');
+          setFormData({ name: '', email: '', phone: '', message: '' });
+          
+          // Reset status after delay
+          setTimeout(() => {
+            setStatus('idle');
+          }, 5000);
+        };
+
+        const handleChange = (e) => {
+          setFormData({ ...formData, [e.target.name]: e.target.value });
+        };
+
+        return (
+          <section className="py-20 sm:py-32 bg-slate-50" id="contact">
+            <div className="container mx-auto px-6">
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                {/* Contact Info */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.7 }}
+                >
+                  <h2 className="text-4xl font-extrabold font-serif mb-4 text-gray-900">
+                    Let's <span className="gradient-text">Work Together</span>
+                  </h2>
+                  <p className="text-lg text-gray-600 mb-8">
+                    Ready to scale your business? Fill out the form, and let's discuss how our AI systems can flood your pipeline with qualified leads.
+                  </p>
+                  
+                  <div className="space-y-6 text-gray-600">
+                    <a href="tel:+917972469053" className="flex items-center gap-4 p-4 rounded-lg bg-white border border-gray-200 hover:border-purple-300 hover:shadow-md transition-all group">
+                      <div className="bg-purple-100 p-3 rounded-full text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <Phone size={20} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-400">Call Us</p>
+                        <p className="text-lg font-bold text-gray-800">+91 7972469053</p>
+                      </div>
+                    </a>
+                    
+                    <a href="mailto:amomedia16@gmail.com" className="flex items-center gap-4 p-4 rounded-lg bg-white border border-gray-200 hover:border-purple-300 hover:shadow-md transition-all group">
+                      <div className="bg-purple-100 p-3 rounded-full text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                         <Mail size={20} />
+                      </div>
+                       <div>
+                        <p className="text-sm font-semibold text-gray-400">Email Us</p>
+                        <p className="text-lg font-bold text-gray-800">amomedia16@gmail.com</p>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div className="mt-10">
+                     <p className="text-sm font-semibold text-gray-500 mb-4 uppercase tracking-wider">Follow Us</p>
+                     <div className="flex gap-4">
+                      {socialLinks.map((link) => (
+                        <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.name} className="bg-white p-3 rounded-full border border-gray-200 text-gray-500 hover:text-purple-600 hover:border-purple-300 hover:shadow-md transition-all">
+                          {link.icon}
+                        </a>
+                      ))}
+                     </div>
+                  </div>
+                </motion.div>
+
+                {/* Contact Form */}
+                <motion.div
+                   initial={{ opacity: 0, x: 20 }}
+                   whileInView={{ opacity: 1, x: 0 }}
+                   viewport={{ once: true, amount: 0.3 }}
+                   transition={{ duration: 0.7 }}
+                   className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100"
+                >
+                   {status === 'success' ? (
+                      <div className="text-center py-12">
+                        <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                          <ShieldCheck size={40} />
+                        </div>
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Inquiry Received!</h3>
+                        <p className="text-gray-600 mb-8">Thank you for reaching out. We have opened WhatsApp with your details to start the conversation immediately.</p>
+                        <button 
+                          onClick={() => setStatus('idle')} 
+                          className="text-purple-600 font-semibold hover:text-purple-700 flex items-center justify-center gap-2 mx-auto"
+                        >
+                          Send another message
+                        </button>
+                      </div>
+                   ) : (
+                      <form onSubmit={handleSubmit} className="space-y-5">
+                        <div className="grid md:grid-cols-2 gap-5">
+                          <div className="space-y-2">
+                            <label htmlFor="name" className="text-sm font-medium text-gray-700">Full Name</label>
+                            <input 
+                              type="text" 
+                              id="name" 
+                              name="name" 
+                              required 
+                              value={formData.name} 
+                              onChange={handleChange} 
+                              className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all" 
+                              placeholder="John Doe" 
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone Number</label>
+                            <input 
+                              type="tel" 
+                              id="phone" 
+                              name="phone" 
+                              required 
+                              value={formData.phone} 
+                              onChange={handleChange} 
+                              className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all" 
+                              placeholder="+91 98765 43210" 
+                            />
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          <label htmlFor="email" className="text-sm font-medium text-gray-700">Email Address</label>
+                          <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            value={formData.email} 
+                            onChange={handleChange} 
+                            className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all" 
+                            placeholder="john@company.com" 
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <label htmlFor="message" className="text-sm font-medium text-gray-700">How can we help?</label>
+                          <textarea 
+                            id="message" 
+                            name="message" 
+                            required 
+                            rows="4"
+                            value={formData.message} 
+                            onChange={handleChange} 
+                            className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:bg-white focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all resize-none" 
+                            placeholder="Tell us about your project goals..." 
+                          ></textarea>
+                        </div>
+
+                        <button 
+                          type="submit" 
+                          disabled={status === 'submitting'} 
+                          className="w-full bg-purple-600 text-white font-bold py-4 rounded-lg hover:bg-purple-700 transition-all duration-300 transform hover:translate-y-[-2px] shadow-lg shadow-purple-600/30 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                        >
+                           {status === 'submitting' ? (
+                             <span>Sending...</span>
+                           ) : (
+                             <>
+                               <span>Send Inquiry</span>
+                               <Send size={18} />
+                             </>
+                           )}
+                        </button>
+                        <p className="text-xs text-center text-gray-500">By submitting this form, you agree to our privacy policy.</p>
+                      </form>
+                   )}
+                </motion.div>
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const Footer = () => {
+        return (
+          <footer className="bg-white border-t border-gray-200">
+            <div className="container mx-auto px-6 py-8 text-center text-gray-500">
+              <p className="text-lg italic text-gray-600 mb-4">“Automation isn’t the future — it’s the foundation of smart business.”</p>
+              <p>&copy; {new Date().getFullYear()} Automate My Outcome. All rights reserved.</p>
+              <p className="text-sm mt-2">Founded by Avinash Sharma</p>
+            </div>
+          </footer>
+        );
+      };
+
+      // --- APP ---
+      
+      const App = () => {
+        return (
+          <div className="bg-white min-h-screen text-gray-600 overflow-x-hidden">
+            <CustomCursor />
+            <Header />
+            {/* Added tooltip to highlight the ElevenLabs widget */}
+            <AIWidgetTooltip />
+            <main>
+              <HeroSection />
+              <ClientLogosSection />
+              <AboutSection />
+              <FoundersSection />
+              <CertificationsSection />
+              <ServicesSection />
+              <CaseStudiesSection />
+              <UseCasesSection />
+              <ProcessSection />
+              <TechStackSection />
+              <WhyWorkWithUsSection />
+              <TestimonialsSection />
+              <FAQSection />
+              <ContactSection />
+            </main>
+            <Footer />
+          </div>
+        );
+      };
+
+      // --- RENDER ---
+
+      const rootElement = document.getElementById('root');
+      if (!rootElement) {
+        throw new Error("Could not find root element to mount to");
+      }
+
+      const root = ReactDOM.createRoot(rootElement);
+      root.render(
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      );
+    </script>
+  </body>
+</html>
